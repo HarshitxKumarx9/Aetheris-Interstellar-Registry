@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIR | Aetheris Interstellar Registry - Definitive Ledger 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@500;800&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --border: #000000;
+            --spacer: 20vh; /* Reduced spacing for a more continuous flow */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            font-size: 1rem;
+            overflow-x: hidden;
+        }
+
+        /* --- MOVING TOP TICKER --- */
+        .top-ticker {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--text);
+            color: var(--bg);
+            padding: 10px 0;
+            z-index: 10000;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-inner {
+            display: inline-block;
+            animation: tickerScroll 60s linear infinite;
+        }
+
+        @keyframes tickerScroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* --- MASTER HEADER --- */
+        .master-header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--text);
+        }
+
+        .master-header h1 { 
+            font-size: 8rem; 
+            font-weight: 900; 
+            letter-spacing: -6px; 
+            text-transform: uppercase; 
+            line-height: 0.8;
+        }
+
+        /* --- UPWARD REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- LAYOUT WRAPPER --- */
+        .ledger-wrapper { max-width: 1000px; margin: 0 auto; padding: 100px 30px; }
+
+        section {
+            padding-top: 100px;
+            padding-bottom: var(--spacer);
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin-bottom: 30px; 
+            border-left: 12px solid var(--text);
+            padding-left: 20px;
+        }
+
+        p { font-weight: 500; margin-bottom: 25px; color: #111; }
+
+        /* --- DATA TABLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        th { 
+            text-align: left; 
+            padding: 12px; 
+            background: var(--text); 
+            color: var(--bg); 
+            text-transform: uppercase;
+        }
+
+        td { padding: 12px; border-bottom: 1px solid #eee; font-weight: 600; }
+
+        /* --- LISTS --- */
+        ul { margin-bottom: 30px; }
+        li { 
+            padding-left: 25px; 
+            position: relative; 
+            margin-bottom: 12px; 
+            font-weight: 600; 
+        }
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            border: 2px solid var(--text);
+            padding: 15px;
+        }
+
+        .stat-card span { display: block; font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.8rem; }
+        .stat-card label { text-transform: uppercase; font-size: 0.65rem; font-weight: 900; }
+
+        footer {
+            padding: 100px 30px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-ticker">
+        <div class="ticker-inner">
+            REGISTRY STATUS: SYNCED 06/04/2026 | TOTAL CONFIRMED: 6,298 WORLDS | 45 STRATEGIC TARGETS LOADED | GJ 3378 b CONFIRMED IN CONSERVATIVE HZ | TRAPPIST-1 i DISCOVERY VIA TTV METHOD | K2-18 b DMS SIGNAL AT 3-SIGMA | PLATO INPUT CATALOG RELEASED: 290,000 STARS | REGISTRY STATUS: SYNCED 06/04/2026 | TOTAL CONFIRMED: 6,298 WORLDS | 45 STRATEGIC TARGETS LOADED | GJ 3378 b CONFIRMED IN CONSERVATIVE HZ | TRAPPIST-1 i DISCOVERY VIA TTV METHOD | K2-18 b DMS SIGNAL AT 3-SIGMA | PLATO INPUT CATALOG RELEASED: 290,000 STARS |
+        </div>
+    </div>
+
+    <header class="master-header">
+        <svg width="60" height="60" viewBox="0 0 100 100">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="black" stroke-width="12"/>
+            <circle cx="50" cy="50" r="15" fill="black"/>
+        </svg>
+        <h1>Aetheris<br>Registry</h1>
+        <p style="margin-top: 15px; text-transform: uppercase; letter-spacing: 10px; font-weight: 900;">Master Ledger 2026</p>
+    </header>
+
+    <div class="ledger-wrapper">
+
+        <!-- 1. GLOBAL CENSUS -->
+        <section class="reveal">
+            <h2>The Census</h2>
+            <p>We have entered the age of "High-Fidelity Characterization." We are no longer simply counting dots; we are measuring worlds.</p>
+            <div class="stat-grid">
+                <div class="stat-card"><label>Confirmed Worlds</label><span>6,298</span></div>
+                <div class="stat-card"><label>TESS Validated</label><span>897</span></div>
+                <div class="stat-card"><label>Rocky Candidates</label><span>45</span></div>
+            </div>
+            <ul>
+                <li><strong>The Milestone:</strong> The exoplanet count officially surpassed 6,000 in early 2026 [1, 2].</li>
+                <li><strong>Validation Ratio:</strong> Only ~15% of stars are expected to host rocky planets in their habitable zones [3].</li>
+            </ul>
+        </section>
+
+        <!-- 2. THE 2026 SHORTLIST -->
+        <section class="reveal">
+            <h2>The Strategic Shortlist</h2>
+            <p>The Bohl-Kaltenegger Catalogue (March 2026) provides a definitive guide for telescopes like JWST and HWO [4, 5].</p>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>Empirical HZ</th><th>3D HZ (Narrow)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Total Targets</td><td>45 Worlds</td><td>24 Worlds</td></tr>
+                    <tr><td>Composition</td><td>Rocky (< 2.0 R⊕)</td><td>Rocky (< 1.6 R⊕)</td></tr>
+                    <tr><td>Primary Goal</td><td>Search for Life</td><td>Confirm Habitability</td></tr>
+                </tbody>
+            </table>
+            <ul>
+                <li><strong>Selection Bias:</strong> This list prioritizes "Actionable Targets"—worlds close enough to observe clearly [6, 7].</li>
+                <li><strong>Observatories:</strong> These targets drive schedules for the James Webb and the future Roman Space Telescope [8, 9].</li>
+            </ul>
+        </section>
+
+        <!-- 3. HABITABLE ZONE CATEGORIES -->
+        <section class="reveal">
+            <h2>Zone Limits</h2>
+            <p>The "Goldilocks Zone" is defined by two specific boundaries to ensure liquid water can exist [10].</p>
+            <ul>
+                <li><strong>Inner Edge (Recent Venus):</strong> The point where a star's heat boils away a planet's water [10, 11].</li>
+                <li><strong>Outer Edge (Early Mars):</strong> The point where heat is insufficient and water freezes into perpetual ice [10, 12].</li>
+                <li><strong>3D Models:</strong> Modern models now account for planetary rotation and atmospheric humidity [13].</li>
+            </ul>
+        </section>
+
+        <!-- 4. PRIME TARGET: PROXIMA CENTAURI b -->
+        <section class="reveal">
+            <h2>Proxima b</h2>
+            <p>Our nearest neighbor and a prime target for future photography (Direct Imaging) [14, 15].</p>
+            <table>
+                <thead>
+                    <tr><th>Parameter</th><th>Registration Data</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Distance</td><td>4.2 Light-years</td></tr>
+                    <tr><td>Mass</td><td>1.07 Earth Masses</td></tr>
+                    <tr><td>Orbital Period</td><td>11.2 Days</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 5. PRIME TARGET: TRAPPIST-1 e -->
+        <section class="reveal">
+            <h2>TRAPPIST-1 e</h2>
+            <p>The "Earth Twin" in terms of how much energy it gets from its star [14-16].</p>
+            <ul>
+                <li><strong>Radiation:</strong> Receives energy levels nearly identical to modern Earth [17].</li>
+                <li><strong>Atmosphere:</strong> JWST has ruled out a thick, Neptune-like hydrogen atmosphere [18, 19].</li>
+                <li><strong>Status:</strong> Still being checked for a heavy, nitrogen-based atmosphere like ours [20].</li>
+            </ul>
+        </section>
+
+        <!-- 6. PRIME TARGET: LHS 1140 b -->
+        <section class="reveal">
+            <h2>LHS 1140 b</h2>
+            <p>This super-Earth is currently our "best bet" for finding a liquid ocean [21, 22].</p>
+            <div class="stat-grid">
+                <div class="stat-card"><label>Size</label><span>1.73 R⊕</span></div>
+                <div class="stat-card"><label>Mass</label><span>5.60 M⊕</span></div>
+                <div class="stat-card"><label>Water Mass</label><span>10% – 20%</span></div>
+            </div>
+            <ul>
+                <li><strong>The Bull's-Eye:</strong> A liquid ocean 4,000 km wide may exist on the side facing its star [22, 23].</li>
+                <li><strong>Secondary Atmosphere:</strong> Tentative hints of nitrogen suggest it is not an airless rock [24, 25].</li>
+            </ul>
+        </section>
+
+        <!-- 7. THE 8TH NEIGHBOR: TRAPPIST-1 i -->
+        <section class="reveal">
+            <h2>TRAPPIST-1 i</h2>
+            <p>Confirmed in late 2025, this 8th world was found using "The Cosmic Tug" (TTV) [26, 27].</p>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Detection Date</td><td>December 2025</td></tr>
+                    <tr><td>Period</td><td>28.7 Days</td></tr>
+                    <tr><td>Mass</td><td>Mars-like</td></tr>
+                    <tr><td>Resonance</td><td>3:2 MMR with Planet h</td></tr>
+                </tbody>
+            </table>
+            <ul>
+                <li><strong>Laplace Angle:</strong> It maintains a stable gravitational dance with planets g and h [26].</li>
+                <li><strong>Coordinates:</strong> RA 23 06 30.3652 | Dec -05 02 36.70 [28].</li>
+            </ul>
+        </section>
+
+        <!-- 8. THE BINARY FRONTIER: TOI-2267 -->
+        <section class="reveal">
+            <h2>The Compact Binary</h2>
+            <p>Three Earth-sized planets living in a crowded double-star system [29, 30].</p>
+            <ul>
+                <li><strong>The Stars:</strong> Two small red dwarfs (M5 and M6) only 8 AU apart [29, 31].</li>
+                <li><strong>Architecture:</strong> Two planets orbit one star, while the third likely orbits the other [29, 32].</li>
+                <li><strong>The First:</strong> This may be the first system found with planets crossing both stars [30, 33].</li>
+            </ul>
+        </section>
+
+        <!-- 9. TOI-2267 TECHNICAL SPECS -->
+        <section class="reveal">
+            <h2>TOI-2267 Registry</h2>
+            <table>
+                <thead>
+                    <tr><th>Planet</th><th>Period</th><th>Radius</th><th>Resonance</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Planet b</td><td>2.28 Days</td><td>1.00 R⊕</td><td>3:2 MMR</td></tr>
+                    <tr><td>Planet c</td><td>3.49 Days</td><td>1.14 R⊕</td><td>3:2 MMR</td></tr>
+                    <tr><td>Cand. .02</td><td>2.03 Days</td><td>0.95 R⊕</td><td>Non-Resonant</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 10. THE HYCEAN STUDY: K2-18 b -->
+        <section class="reveal">
+            <h2>K2-18 b</h2>
+            <p>A "Hycean" world: a planet-wide ocean covered by a thick hydrogen atmosphere [34, 35].</p>
+            <ul>
+                <li><strong>Distance:</strong> 124 light-years away in the constellation Leo [34, 36].</li>
+                <li><strong>Radius:</strong> 2.61 Earth Radii—the boundary between rocky and gaseous worlds [34, 37].</li>
+            </ul>
+        </section>
+
+        <!-- 11. THE DMS SIGNAL -->
+        <section class="reveal">
+            <h2>The Smell of Life</h2>
+            <p>JWST data hint at a gas called DMS, which is only made by life on Earth [35, 38].</p>
+            <table>
+                <thead>
+                    <tr><th>Molecule</th><th>Significance</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Methane (CH4)</td><td>Confirmed</td></tr>
+                    <tr><td>CO2</td><td>Confirmed</td></tr>
+                    <tr><td>DMS / DMDS</td><td>3-Sigma Independent Detection</td></tr>
+                </tbody>
+            </table>
+            <ul>
+                <li><strong>Abundance:</strong> Sulfur gas levels exceed 10 parts per million [35, 38].</li>
+                <li><strong>Caution:</strong> Scientists are still ruling out "Abiotic" (non-life) sources [35, 39].</li>
+            </ul>
+        </section>
+
+        <!-- 12. THE "LOUDEST PLANET WINS" BIAS -->
+        <section class="reveal">
+            <h2>Observational Bias</h2>
+            <p>The first signs of life will likely come from "Atypical" worlds, not Earth clones [40].</p>
+            <ul>
+                <li><strong>Signal Strength:</strong> Larger planets with thick air are 32 times easier to read than Earth analogs [40].</li>
+                <li><strong>Paradox:</strong> The worlds easiest to study are the ones least likely to host humans [40, 41].</li>
+            </ul>
+        </section>
+
+        <!-- 13. COLD EARTH: HD 137010 b -->
+        <section class="reveal">
+            <h2>Frozen Earth</h2>
+            <p>An Earth-radius world colder than Mars, found in old data (Jan 2026) [42-44].</p>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>Registration</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Radius</td><td>1.06 Earth Radii</td></tr>
+                    <tr><td>Period</td><td>~355 Days</td></tr>
+                    <tr><td>Temperature</td><td>-68°C (-90°F)</td></tr>
+                </tbody>
+            </table>
+            <ul>
+                <li><strong>The Discovery:</strong> Found by re-analyzing archival data from the Kepler mission [42, 45].</li>
+                <li><strong>Chance for Water:</strong> 40% probability if it has a heavy greenhouse atmosphere [46, 47].</li>
+            </ul>
+        </section>
+
+        <!-- 14. RECENT ADDITION: GJ 3378 b -->
+        <section class="reveal">
+            <h2>Conservative HZ</h2>
+            <p>Confirmed on June 4, 2026: a super-Earth orbiting a nearby red dwarf [2, 48].</p>
+            <ul>
+                <li><strong>Location:</strong> Inside the star's "Conservative" Habitable Zone—the safest place for water [10, 48].</li>
+                <li><strong>Host:</strong> A nearby M dwarf star [48].</li>
+            </ul>
+        </section>
+
+        <!-- 15. RECENT ADDITION: TOI-4311 -->
+        <section class="reveal">
+            <h2>Super-Earth Pair</h2>
+            <p>A pair of large rocky planets detected around a K-type star (May 2026) [49, 50].</p>
+            <table>
+                <thead>
+                    <tr><th>Target</th><th>Parsecs</th><th>Mass</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>TOI-4311 b</td><td>135.0</td><td>4.5 Earths</td></tr>
+                    <tr><td>TOI-4311 c</td><td>135.0</td><td>13.58 Earths</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 16. THE "SUPER-PUFF": TOI-4507 b -->
+        <section class="reveal">
+            <h2>Tenuous Worlds</h2>
+            <p>Confirmed Jan 2026: a young planet with a very low density [51, 52].</p>
+            <ul>
+                <li><strong>Type:</strong> "Super-Puff" Sub-Neptune—massive but extremely light [51, 53].</li>
+                <li><strong>Orbit:</strong> A long orbital period relative to other puffy worlds [51, 52].</li>
+            </ul>
+        </section>
+
+        <!-- 17. NASA SCIENCE GAPS (I-V) -->
+        <section class="reveal">
+            <h2>Strategy Gaps I</h2>
+            <p>NASA's roadmap to finding life depends on closing 17 critical gaps [54].</p>
+            <ul>
+                <li><strong>SCI-01:</strong> Need spectroscopy of small exoplanet air [54, 55].</li>
+                <li><strong>SCI-02:</strong> Better models for planet atmospheres [54, 56].</li>
+                <li><strong>SCI-03:</strong> Improved precision in pulling signals from noise [54, 57].</li>
+                <li><strong>SCI-05:</strong> Exact rates for how common Earth clones are [54, 58].</li>
+            </ul>
+        </section>
+
+        <!-- 18. NASA SCIENCE GAPS (VI-X) -->
+        <section class="reveal">
+            <h2>Strategy Gaps II</h2>
+            <ul>
+                <li><strong>SCI-08:</strong> Stopping stellar "jitter" from masking planet weight [54, 59].</li>
+                <li><strong>SCI-09:</strong> Confirming planet candidates dynamically [54, 60].</li>
+                <li><strong>SCI-10:</strong> Detailed study of specific stars we will photograph [54, 61].</li>
+            </ul>
+        </section>
+
+        <!-- 19. NASA SCIENCE GAPS (XI-XVII) -->
+        <section class="reveal">
+            <h2>Strategy Gaps III</h2>
+            <ul>
+                <li><strong>SCI-11:</strong> Understanding cosmic dust (Exozodi) that hides planets [54, 62].</li>
+                <li><strong>SCI-15:</strong> Mitigating star spots that look like atmospheres [54, 63].</li>
+                <li><strong>SCI-16:</strong> Listing all possible signs of life (Biosignatures) [54, 64].</li>
+                <li><strong>SCI-17:</strong> Understanding how planets and disks form [54, 65].</li>
+            </ul>
+        </section>
+
+        <!-- 20. THE PLATO TREASURE MAP -->
+        <section class="reveal">
+            <h2>PIC Catalog</h2>
+            <p>Delivery of the catalog for the next great planet hunter mission (Feb 2026) [66].</p>
+            <div class="stat-grid">
+                <div class="stat-card"><label>Total Stars Cataloged</label><span>290,000</span></div>
+                <div class="stat-card"><label>Initial Pool</label><span>2.5 Million</span></div>
+            </div>
+            <ul>
+                <li><strong>Targeting:</strong> Focusing on "Sun-like" stars to find Earth 2.0 [66, 67].</li>
+                <li><strong>Field:</strong> Southern Hemisphere constellation of Carina [68].</li>
+            </ul>
+        </section>
+
+        <!-- 21. PLATO ARCHITECTURE -->
+        <section class="reveal">
+            <h2>2 Billion Pixels</h2>
+            <p>PLATO will be the highest resolution camera ever flown on a space mission [69].</p>
+            <ul>
+                <li><strong>Camera Count:</strong> 26 independent "Robotic Eyes" [69, 70].</li>
+                <li><strong>Sensitivity:</strong> Can see light dimming as shallow as 84 parts per million [67].</li>
+            </ul>
+        </section>
+
+        <!-- 22. HWO STAR LIST -->
+        <section class="reveal">
+            <h2>HWO Tier 1</h2>
+            <p>The Habitable Worlds Observatory tiering system for maximizing science yield [71].</p>
+            <ul>
+                <li><strong>Tier 1 Stars:</strong> 164 nearby stars that are the best candidates for imaging [71].</li>
+                <li><strong>Mission Goal:</strong> Obtain high-quality spectra for at least 25 habitable worlds [72, 73].</li>
+            </ul>
+        </section>
+
+        <!-- 23. GAIA DR4 PROJECTIONS -->
+        <section class="reveal">
+            <h2>The Gaia Flood</h2>
+            <p>A massive spike in planet counts is expected with the upcoming data release [74].</p>
+            <table>
+                <thead>
+                    <tr><th>Release</th><th>Expected Discoveries</th><th>Timeline</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Gaia DR4</td><td>~7,500 Planets</td><td>December 2026</td></tr>
+                    <tr><td>Gaia DR5</td><td>~120,000 Planets</td><td>Post-2030</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 24. PANDORA MISSION -->
+        <section class="reveal">
+            <h2>SmallSat Search</h2>
+            <p>The Pandora mission (Jan 2026) will study how star spots affect our view of air [75, 76].</p>
+            <ul>
+                <li><strong>Target List:</strong> 20 exoplanets orbiting small, cool stars [75].</li>
+                <li><strong>Method:</strong> Simultaneous visible light and infrared study [76].</li>
+            </ul>
+        </section>
+
+        <!-- 25. THE UVEX SURVEY -->
+        <section class="reveal">
+            <h2>Ultraviolet Eye</h2>
+            <p>Launching in 2030 to map the "High Energy" environment of planet hosts [77].</p>
+            <ul>
+                <li><strong>Sensitivity:</strong> 50 to 100 times deeper than previous UV missions [77].</li>
+                <li><strong>Goal:</strong> Measure the UV light that strips planet atmospheres [77].</li>
+            </ul>
+        </section>
+
+        <!-- 26. THE "SNOWBALL" CLIMATE -->
+        <section class="reveal">
+            <h2>Snowball Worlds</h2>
+            <p>Why worlds at the edge of the habitable zone might be frozen but still have seas [23, 78].</p>
+            <ul>
+                <li><strong>Tidal Locking:</strong> One side of the planet always faces the sun, keeping it liquid [79, 80].</li>
+                <li><strong>Bull's-Eye:</strong> A circular ocean centered exactly under the star [22, 23].</li>
+            </ul>
+        </section>
+
+        <!-- 27. STARK DIVIDE: TRAPPIST-1 b & c -->
+        <section class="reveal">
+            <h2>Airless Neighbors</h2>
+            <p>New maps (April 2026) show the inner TRAPPIST worlds are likely bare rock [81, 82].</p>
+            <table>
+                <thead>
+                    <tr><th>Planet</th><th>Day Side</th><th>Night Side</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>TRAPPIST-1 b</td><td>> 200°C</td><td>< -200°C</td></tr>
+                    <tr><td>TRAPPIST-1 c</td><td>~ 100°C</td><td>< -200°C</td></tr>
+                </tbody>
+            </table>
+            <p>The lack of air to move heat around creates this extreme temperature gap [82].</p>
+        </section>
+
+        <!-- 28. MISSION TIMELINE: 2026-2040 -->
+        <section class="reveal">
+            <h2>Search Roadmap</h2>
+            <ul>
+                <li><strong>2026:</strong> Shortlist released; Pandora & SPARCS launches [77, 83].</li>
+                <li><strong>2027:</strong> Nancy Grace Roman Space Telescope launches [8, 84].</li>
+                <li><strong>2029:</strong> Extremely Large Telescope (ELT) sees first light [84, 85].</li>
+                <li><strong>2040s:</strong> Habitable Worlds Observatory operational [85, 86].</li>
+            </ul>
+        </section>
+
+        <!-- 29. SYSTEM STUDY: TOI-4311 c -->
+        <section class="reveal">
+            <h2>TOI-4311 c</h2>
+            <p>One of the heaviest rocky worlds found in the latest registry update [50].</p>
+            <div class="stat-grid">
+                <div class="stat-card"><label>Mass</label><span>13.58 M⊕</span></div>
+                <div class="stat-card"><label>Host</label><span>K-type Star</span></div>
+                <div class="stat-card"><label>Year</label><span>15.1 Days</span></div>
+            </div>
+        </section>
+
+        <!-- 30. FINAL SUMMARY -->
+        <section class="reveal" style="padding-bottom: 300px;">
+            <h2>Strategy Shift</h2>
+            <p>The "Gold Rush" is over. We are no longer asking *if* there are other Earths, but specifically which of the 45 actionable worlds hold life. The Aetheris Registry tracks the transition from survey to strategy [5, 87].</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Aetheris Interstellar Registry | Registry Code: CL#26-0880 | JPL Rev I</p>
+        <p>Data compiled June 4, 2026. synthesized from 37 scientific archives.</p>
+    </footer>
+
+    <script>
+        // Vertical reveal trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+        
+        console.log("AIR Registry Sync Complete. 30 Modules Online.");
+    </script>
+</body>
+</html>
